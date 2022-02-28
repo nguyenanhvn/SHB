@@ -1,0 +1,310 @@
+#login {
+    @include flex-center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 20px;
+
+    @media (max-width: 767px) {
+        padding: 40px 20px;
+    }
+
+    .login_box {
+        position: relative;
+        border-radius: 12px;
+
+        .box-bg {
+            object-fit: cover;
+            padding: 43px 64px 95px;
+            color: #fff;
+            width: 485px;
+            border-radius: 12px;
+
+            @media (max-width: 767px) {
+                padding: 40px 30px;
+            }
+
+            @media (max-width: 500px) {
+                width: calc(100vw - 40px);
+            }
+        }
+
+        .box-logo {
+            text-align: center;
+
+            img {
+                max-height: 34px;
+            }
+        }
+
+        .box-caption {
+            text-align: center;
+            margin-top: 16px;
+
+            .caption--heading {
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 48px;
+
+                @media (max-width: 767px) {
+                    font-size: 24px;
+                    line-height: 1.3;
+                }
+            }
+
+            .caption--text {
+                margin-top: 5px;
+                font-size: 16px;
+                line-height: 24px;
+                color: #E6E6E6;
+
+                @media (max-width: 767px) {
+                    font-size: 14px;
+                    line-height: 1.3;
+                }
+            }
+        }
+
+        .box-form {
+            margin-top: 40px;
+
+            @media (max-width: 767px) {
+                margin-top: 30px;
+            }
+
+            .form--login {
+                display: grid;
+                grid-gap: 16px;
+            }
+
+            .group {
+                position: relative;
+
+                &.pass--view {
+                    .input--icon path:nth-child(1) {
+                        display: none;
+                    }
+                }
+
+                .label--control {
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #F3F3F3;
+                    margin-bottom: 4px;
+                    font-weight: normal;
+                }
+
+                .input--control {
+                    width: 100%;
+                    background: #fff;
+                    padding: 0 45px 0 16px;
+                    border: 0;
+                    outline: none;
+                    font-size: 16px;
+                    color: #000;
+                    font-weight: normal;
+                    height: 45px;
+                    border-radius: 4px;
+
+                    @media (max-width: 767px) {
+                        font-size: 14px;
+                    }
+
+                    &::placeholder {
+                        color: #CCCCCC;
+                        opacity: 1;
+                    }
+
+                    &::-ms-input-placeholder {
+                        color: #CCCCCC;
+                    }
+
+                    &::-ms-input-placeholder {
+                        color: #CCCCCC;
+                    }
+                }
+
+                .input--icon {
+                    position: absolute;
+                    right: 16px;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    cursor: pointer;
+                    pointer-events: auto;
+                }
+
+                .button--control {
+                    width: 100%;
+                    line-height: 45px;
+                    padding: 0 20px;
+                    margin-top: 24px;
+                    text-align: center;
+                    background: $color;
+                    color: #fff;
+                    font-weight: bold;
+                    font-size: 16px;
+                    height: 45px;
+                    outline: none;
+                    border: 0;
+                    border-radius: 4px;
+                    @include transition;
+
+                    @media (max-width: 767px) {
+                        margin-top: 10px;
+                    }
+
+                    &:hover {
+                        background: $color-hover;
+                    }
+                }
+
+                .group--action {
+                    margin-top: 8px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .group--link {
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: #B3B3B3;
+                        @include transition;
+
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .checkbox--input {
+                    display: none;
+                }
+
+                .checkbox--label {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    transition: color 250ms cubic-bezier(0.4, 0, 0.23, 1);
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    cursor: pointer;
+                    pointer-events: auto;
+                }
+
+                .checkbox--input+.checkbox--label>span {
+                    margin-right: 12px;
+                    width: 20px;
+                    height: 20px;
+                    border: 0;
+                    border-radius: 2.8px;
+                    cursor: pointer;
+                    transition: all 250ms cubic-bezier(0.4, 0, 0.23, 1);
+                    display: block;
+                    background: #fff;
+                }
+
+                .checkbox--input:checked+.checkbox--label>ins {
+                    height: 100%;
+                }
+
+                .checkbox--input:checked+.checkbox--label>span {
+                    border: 10px solid #1ed760;
+                    animation: shrink-bounce 200ms cubic-bezier(0.4, 0, 0.23, 1);
+                }
+
+                .checkbox--input:checked+.checkbox--label>span:before {
+                    content: "";
+                    position: absolute;
+                    top: 7px;
+                    left: 4px;
+                    border-right: 3px solid transparent;
+                    border-bottom: 3px solid transparent;
+                    transform: rotate(45deg);
+                    transform-origin: 0% 100%;
+                    animation: checkbox-check 125ms 250ms cubic-bezier(0.4, 0, 0.23, 1) forwards;
+                }
+
+                @keyframes shrink-bounce {
+                    0% {
+                        transform: scale(1);
+                    }
+
+                    33% {
+                        transform: scale(0.85);
+                    }
+
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+
+                @keyframes checkbox-check {
+                    0% {
+                        width: 0;
+                        height: 0;
+                        border-color: #fff;
+                        transform: translate3d(0, 4px, 0) rotate(40deg);
+                    }
+
+                    33% {
+                        width: 6px;
+                        height: 0;
+                        transform: translate3d(0, 4px, 0) rotate(40deg);
+                    }
+
+                    100% {
+                        width: 6px;
+                        height: 12px;
+                        border-color: #fff;
+                        transform: translate3d(0, -5.5px, 0) rotate(40deg);
+                    }
+                }
+
+                .select2-container {
+                    width: 100% !important;
+                }
+
+                .select2-container--default .select2-selection--single {
+                    width: 100%;
+                    line-height: 45px;
+                    height: 45px;
+                    border: 0;
+                    padding: 0 46px 0 16px;
+                }
+
+                .select2-container--default .select2-selection--single .select2-selection__rendered {
+                    padding: 3px 0 0;
+                    line-height: 45px;
+                    font-size: 16px;
+                    color: #333;
+                    font-weight: normal;
+                }
+
+                .select2-container--default .select2-selection--single .select2-selection__arrow {
+                    width: 45px;
+                    height: 45px;
+
+                    b {
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                        width: 9px;
+                        height: 6px;
+                        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOSA2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNOC4yNzYxNCAxLjU0OTZMNC44MDEzIDUuNzI1NjlDNC43MzA5MSA1LjgxMDMgNC42NDI3OCA1Ljg3ODM3IDQuNTQzMTMgNS45MjUwOUM0LjQ0MzQ5IDUuOTcxODEgNC4zMzQ3OSA1Ljk5NjAzIDQuMjI0NzQgNS45OTYwM0M0LjExNDY4IDUuOTk2MDMgNC4wMDU5OCA1Ljk3MTgxIDMuOTA2MzQgNS45MjUwOUMzLjgwNjcgNS44NzgzNyAzLjcxODU2IDUuODEwMyAzLjY0ODE3IDUuNzI1NjlMMC4xNzMzMyAxLjU0OTZDMC4wODIyNjExIDEuNDQwMDggMC4wMjQyNjA0IDEuMzA2OSAwLjAwNjExMjg1IDEuMTY1NjNDLTAuMDEyMDM0NyAxLjAyNDM1IDAuMDEwNDIxMyAwLjg4MDgzMyAwLjA3MDg1MzUgMC43NTE4NTVDMC4xMzEyODYgMC42MjI4NzggMC4yMjcxOTUgMC41MTM3NzUgMC4zNDczNjQgMC40MzczMUMwLjQ2NzUzMiAwLjM2MDg0NCAwLjYwNjk4OSAwLjMyMDE3OCAwLjc0OTQyMyAwLjMyMDA2OEg3LjcwMDA1QzcuODQyNDggMC4zMjAxNzggNy45ODE5NCAwLjM2MDg0NCA4LjEwMjExIDAuNDM3MzFDOC4yMjIyNyAwLjUxMzc3NSA4LjMxODE5IDAuNjIyODc4IDguMzc4NjIgMC43NTE4NTVDOC40MzkwNSAwLjg4MDgzMyA4LjQ2MTUxIDEuMDI0MzUgOC40NDMzNiAxLjE2NTYzQzguNDI1MjEgMS4zMDY5IDguMzY3MjEgMS40NDAwOCA4LjI3NjE0IDEuNTQ5NlYxLjU0OTZaIiBmaWxsPSIjQjNCM0IzIi8+Cjwvc3ZnPgo=) center /cover;
+                        border: 0;
+                    }
+                }
+                .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow{
+            	    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    input[type=password]::-ms-reveal,
+    input[type=password]::-ms-clear {
+        display: none;
+    }
+}
