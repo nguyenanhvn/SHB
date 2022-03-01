@@ -122,7 +122,8 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('click', '.sort--filter .dropdown-nborder', function(event) {
         event.preventDefault();
-        jQuery('.box--filter').slideDown(300);
+        jQuery(this).toggleClass("open");
+        jQuery('.box--filter').slideToggle(300);
     });
 
     jQuery(document).on('keyup', '.content-banner .content-box .box--search .search--input input', function() {
