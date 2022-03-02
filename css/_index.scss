@@ -881,6 +881,16 @@
                 object-fit: cover;
             }
         }
+        &.style--small{
+            .content-box{
+                height: 450px;
+            }
+        }
+        &.style--3{
+            .content-box{
+                padding-top: 70px;
+            }
+        }
         .content-box {
             position: relative;
             z-index: 9;
@@ -1461,20 +1471,24 @@
 
 // Breadcrumbs
     .content-breadcrumbs{
-        padding: 96px 0 0;
+        padding-top: 40px;
         .content-box{
-            border-bottom: 1px solid #d4d4d4;
+            border-bottom: 1px solid #4d4d4d;
             display: flex;
             justify-content: space-between;
             padding-bottom: 12px;
             .box--left{
                 display: flex;
                 align-items: center;
+                img{
+                    position: relative;
+                    top: -2px;
+                }
                 span{
                     margin-left: 12px;
                     font-weight: bold;
                     font-size: 16px;
-                    color: #FFFFFF;
+                    color: $color-title;
                     padding: 3px 0;
                 }
             }
@@ -1485,7 +1499,7 @@
                     width: 40px;
                     height: 40px;
                     position: relative;
-                    border: 1px solid #E6E6E6;
+                    border: 1px solid #B3B3B3;
                     border-radius: 4px;
                     cursor: pointer;
                     pointer-events: auto;
@@ -1541,6 +1555,43 @@
                         color: #FFFFFF;
                         @media (max-width: 767px){
                             display: none;
+                        }
+                    }
+                }
+                .box--layout{
+                    cursor: pointer;
+                    pointer-events: auto;
+                    margin-left: 12px;
+                    border: 1px solid #B3B3B3;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    &.active{
+                        .style--list{
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        .style--grid{
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+                    .style--list{
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    img{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                        @include transition;
+                        &.inactive{
+                            z-index: -1;
                         }
                     }
                 }
