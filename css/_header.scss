@@ -39,7 +39,7 @@
                         margin-left: 32px;
                     }
 
-                    &.current-page-item {
+                    &.current_page_item {
                         a {
                             font-weight: bold;
 
@@ -631,7 +631,7 @@
                         border-top: 1px solid rgba(#fff, 0.5);
                     }
 
-                    &.current-page-item {
+                    &.current_page_item {
                         &:after {
                             content: "";
                             width: 4px;
