@@ -538,6 +538,8 @@ perspective effects (not including the modals and the overlay).
       padding: 43px 64px 95px;
       color: #fff;
       width: 485px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(3, 78, 146, 0.92) 0%, rgba(41, 137, 176, 0.970417) 120.22%);
       border-radius: 12px; }
       @media (max-width: 767px) {
         #login .login_box .box-bg {
