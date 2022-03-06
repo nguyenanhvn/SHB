@@ -33,14 +33,10 @@ jQuery(document).ready(function() {
     });
 
     //SHOW AND HIDE LIGHBOX
-	jQuery(document).on('click','.md-trigger',function(event){    	
-    	var value = jQuery(this).attr('data-modal');
-    	var src = jQuery(this).attr('data-src');
+	jQuery(document).on('click','.md-trigger',function(event){
     	event.preventDefault();
     	jQuery('.md-modal').removeClass('md-show');
-        jQuery(value).addClass('md-show');
-        jQuery(value).find('iframe').attr('src', src);
-        jQuery('body').addClass('none-scroll');
+        jQuery('#myModal').addClass('md-show');
     });
 
     jQuery(document).on('click','.md-close, .md-overlay, .md-cancel',function(){
