@@ -97,6 +97,28 @@
                         display: none;
                     }
                 }
+                &.have--error{
+                    .input--control{
+                        color: red;
+                        border-color: red;
+                        &::placeholder {
+                            color: red;
+                        }
+
+                        &::-ms-input-placeholder {
+                            color: red;
+                        }
+
+                        &::-ms-input-placeholder {
+                            color: red;
+                        }
+                    }
+                    .input--icon{
+                        path{
+                            fill: red;
+                        }
+                    }
+                }
 
                 .label--control {
                     font-size: 16px;
@@ -117,7 +139,7 @@
                     font-weight: normal;
                     height: 45px;
                     border-radius: 4px;
-
+                    border: 1px solid #fff;
                     @media (max-width: 767px) {
                         font-size: 14px;
                     }
@@ -135,12 +157,15 @@
                         color: #CCCCCC;
                     }
                 }
+                .error--msg{
+                    color: red;
+                    padding-top: 4px;
+                }
 
                 .input--icon {
                     position: absolute;
                     right: 16px;
-                    top: 0;
-                    bottom: 0;
+                    top: 10px;
                     margin: auto;
                     cursor: pointer;
                     pointer-events: auto;

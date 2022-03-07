@@ -59,13 +59,22 @@ jQuery(document).ready(function() {
     jQuery(document).on('click', '.action--like', function(){
         jQuery(this).toggleClass('liked');
     })
-    jQuery(document).on('click', '.cld--bmore', function(){
-    	jQuery(this).addClass('active');
-        var that  = jQuery(this);
-        setTimeout(function(){
-            that.removeClass('active');
-        }, 5000);
-    })
+
+    var twoToneButton = document.querySelector('.cld--bmore');
+    if(twoToneButton) {
+        twoToneButton.addEventListener("click", function() {
+            twoToneButton.innerHTML = "Loading ...";
+            twoToneButton.classList.add('active');
+            
+            setTimeout( 
+                function  (){  
+                    twoToneButton.classList.remove('active');
+                    twoToneButton.innerHTML = "Show more result";
+                    
+                }, 6000);
+        }, false);
+    }
+
     jQuery(document).on('click', '.notify--icon', function(){
     	jQuery(this).parent().toggleClass('open');
         jQuery('#dark-shadow').removeClass('active');
