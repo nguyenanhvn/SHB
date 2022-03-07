@@ -1405,6 +1405,16 @@ perspective effects (not including the modals and the overlay).
   100% {
     -webkit-transform: translateX(0);
     transform: translateX(0); } }
+@keyframes anims {
+  33.33% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px); }
+  66.6% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px); }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
 .padding40 {
   padding: 40px 0; }
 
@@ -1852,7 +1862,20 @@ perspective effects (not including the modals and the overlay).
       height: 24px;
       position: absolute;
       top: 8px;
-      right: 10px; }
+      right: 10px;
+      transition: all 0.2s ease-out 0.2s;
+      -webkit-transition: all 0.2s ease-out 0.2s;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0); }
+    .dropbox .dropdown--current:hover:after {
+      -webkit-animation-name: anims;
+      animation-name: anims;
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: 10;
+      animation-iteration-count: 10; }
   .dropbox .dropdown--ui {
     position: absolute;
     top: 59px;
@@ -2085,6 +2108,10 @@ perspective effects (not including the modals and the overlay).
           color: #333; }
         .box--suggest .suggest--key ul li a {
           color: #a2a2a2; }
+          .box--suggest .suggest--key ul li a:hover {
+            color: #2D9CDB; }
+            .box--suggest .suggest--key ul li a:hover span {
+              color: #2D9CDB; }
   .box--suggest .suggest--recent ul {
     list-style-type: none;
     padding: 0;
@@ -2804,6 +2831,8 @@ perspective effects (not including the modals and the overlay).
     .content-populate .filter--groups .dropbox .dropdown--current {
       padding-top: 11px;
       padding-bottom: 8px; }
+      .content-populate .filter--groups .dropbox .dropdown--current:after {
+        top: 10px; }
     .content-populate .filter--groups .filter--search {
       position: relative; }
       .content-populate .filter--groups .filter--search input {
