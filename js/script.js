@@ -35,8 +35,7 @@ jQuery(document).ready(function() {
     //SHOW AND HIDE LIGHBOX
 	jQuery(document).on('click','.md-trigger',function(event){
     	event.preventDefault();
-    	jQuery('.md-modal').removeClass('md-show');
-        jQuery('#myModal').addClass('md-show');
+        jQuery('#' + jQuery(this).attr('data-type')).addClass('md-show');
     });
 
     jQuery(document).on('click','.md-close, .md-overlay, .md-cancel',function(){
@@ -55,6 +54,9 @@ jQuery(document).ready(function() {
     	}
     })
     jQuery(document).on('click', '.item--like', function(){
+        jQuery(this).toggleClass('liked');
+    })
+    jQuery(document).on('click', '.action--like', function(){
     	jQuery(this).toggleClass('liked');
     })
     jQuery(document).on('click', '.notify--icon', function(){
@@ -100,7 +102,13 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('click', '.dropbox .dropdown--current, .search--dropdown .dropdown--current', function(event) {
         event.preventDefault();
-        jQuery(this).parent().toggleClass('open');
+        event.stopPropagation();
+        if(jQuery(this).parent().hasClass('open')){
+            jQuery(this).parent().removeClass('open');
+        } else {
+            jQuery('.dropbox, .search--dropdown').removeClass('open');
+            jQuery(this).parent().addClass('open');
+        }
     });
 
     jQuery(document).on('click', '.dropbox .dropdown--ui li', function(event) {
@@ -124,27 +132,40 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('keyup', '.box--search .search--input input', function() {
         if (jQuery(this).val().length > 2) {
+            jQuery(this).parent().addClass('active');
             jQuery(this).closest('.box--search').parent().find('.box--suggest').addClass('active');
         } else {
+            jQuery(this).parent().removeClass('active');
             jQuery(this).closest('.box--search').parent().find('.box--suggest').removeClass('active');
         }
+    })
+
+    jQuery(document).on('click', '.box--search .search--input svg', function(event) {
+        jQuery(this).parent().find('input').val('');
+        jQuery(this).parent().removeClass('active');
+        jQuery(this).closest('.box--search').parent().find('.box--suggest').removeClass('active');
     })
 
     jQuery(document).on('click', '.layout--grid', function(event) {
         event.preventDefault();
         if(jQuery(this).hasClass('active')){
             jQuery(this).removeClass('active');
-            jQuery('.box--render--grid').slideDown(300);
-            jQuery('.box--render--list').slideUp(300);
+            jQuery('.box--render--grid').show();
+            jQuery('.box--render--list').hide();
         } else {
             jQuery(this).addClass('active');
-            jQuery('.box--render--list').slideDown(300);
-            jQuery('.box--render--grid').slideUp(300);
+            jQuery('.box--render--list').show();
+            jQuery('.box--render--grid').hide();
         }
     });
     jQuery(document).on('click', '.list--table table th svg', function(event) {
         event.preventDefault();
         jQuery(this).parent().toggleClass('active');
+    });
+
+    jQuery(document).on('click', 'html, body', function(){
+        jQuery('.dropbox, .search--dropdown').removeClass('open');
+        jQuery('.box--suggest').removeClass('active');
     });
 });
 

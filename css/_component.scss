@@ -221,7 +221,7 @@ perspective effects (not including the modals and the overlay).
 			}
 			.box--left{
 				.left--img{
-					img{
+					img, video, iframe{
 						max-height: 458px;
 						object-fit: cover;
 						width: 100%;
@@ -285,15 +285,21 @@ perspective effects (not including the modals and the overlay).
 									}
 									.child--actions{
 										display: flex;
-										> div {
+										> a {
 											display: flex;
 											align-items: center;
-											+ div{
-												margin-left: 36px;
-												@media (max-width: 450px){
-													margin-left: 12px;
-												}
+											margin-right: 36px;
+											color: #fff;
+											text-decoration: none !important;
+											@media (max-width: 450px){
+												margin-left: 12px;
 											}
+										}
+										> div{
+											margin-right: 36px;
+											@media (max-width: 450px){
+												margin-left: 12px;
+											}											
 										}
 										svg,
 										img{
@@ -309,6 +315,10 @@ perspective effects (not including the modals and the overlay).
 											span{
 												font-weight: bold;
 											}
+										}
+										.action--time svg,
+										.action--time img{
+											top: 2px;
 										}
 										.action--time,
 										.action--like{
@@ -354,6 +364,7 @@ perspective effects (not including the modals and the overlay).
 									    display: flex;
 									    align-items: center;
 									    margin-top: 8px;
+									    color: #fff;
 										span{
 											font-weight: bold;
 											font-size: 14px;
@@ -549,7 +560,6 @@ perspective effects (not including the modals and the overlay).
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
-	background: #fff;
 	border: 1px solid rgba(#fff, 0.3);
 }
 

@@ -148,6 +148,11 @@
                 position: relative;
                 border-radius: 4px;
                 overflow: hidden;
+                &:hover{
+                    .item--img img{
+                        transform: scale(1.1) rotate(2deg);
+                    }
+                }
                 .item--img {
                     display: block;
                     overflow: hidden;
@@ -186,6 +191,7 @@
                         top: 0;
                         left: 0;
                         width: 100%;
+                        @include transition;
                     }
                 }
 
@@ -356,6 +362,32 @@
 
             .item {
                 &:not(.has--video) {
+                    .item--img{
+                        cursor: pointer;
+                        pointer-events: auto;
+                        &:hover:before{
+                            transform: scale(1);
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        &:before{
+                            content: '';
+                            background: url(../images/icons/icon-search.svg) center /cover;
+                            width: 20px;
+                            height: 20px;
+                            @include transition;
+                            transform: scale(0.5);
+                            opacity: 0;
+                            visibility: hidden;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            margin: auto;
+                            z-index: 9;
+                        }
+                    }
                     .item--img img:nth-child(2) {
                         display: none;
                     }
@@ -616,6 +648,8 @@
     }
     .box--fsearch{
         position: relative;
+        width: 505px;
+        max-width: 100%;
     }
     .box--search {
         display: grid;
@@ -705,7 +739,12 @@
 
         .search--input {
             position: relative;
-
+            &.active{
+                svg{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
             &:before {
                 content: '';
                 background: #E6E6E6;
@@ -750,6 +789,18 @@
                 &::-ms-input-placeholder {
                   color: rgba(#4D4D4D, 0.5);
                 }
+            }
+            svg{
+                position: absolute;
+                top: 0;
+                right: 16px;
+                bottom: 0;
+                margin: auto;
+                @include transition;
+                opacity: 0;
+                visibility: hidden;
+                cursor: pointer;
+                pointer-events: auto;
             }
         }
 
@@ -832,6 +883,9 @@
                     }
                     span{
                         color: #333;
+                    }
+                    a{
+                        color: #a2a2a2;
                     }
                 }
             }
@@ -960,6 +1014,7 @@
             .box--center{
                 max-width: 100%;
             }
+            .box--fsearch,
             .box--search,
             .box--suggest{
                 width: 635px;
@@ -1192,6 +1247,7 @@
 
 // Category
     .content-category {
+        padding-bottom: 90px;
         .box--heading {
             font-weight: bold;
             font-size: 40px;
