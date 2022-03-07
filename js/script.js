@@ -57,7 +57,14 @@ jQuery(document).ready(function() {
         jQuery(this).toggleClass('liked');
     })
     jQuery(document).on('click', '.action--like', function(){
-    	jQuery(this).toggleClass('liked');
+        jQuery(this).toggleClass('liked');
+    })
+    jQuery(document).on('click', '.cld--bmore', function(){
+    	jQuery(this).addClass('active');
+        var that  = jQuery(this);
+        setTimeout(function(){
+            that.removeClass('active');
+        }, 5000);
     })
     jQuery(document).on('click', '.notify--icon', function(){
     	jQuery(this).parent().toggleClass('open');
