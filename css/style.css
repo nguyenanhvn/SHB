@@ -62,7 +62,7 @@ img {
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 99;
+  z-index: 1001;
   opacity: 0;
   visibility: hidden; }
   .loading.active {
@@ -192,7 +192,7 @@ perspective effects (not including the modals and the overlay).
   left: 50%;
   min-width: 320px;
   height: auto;
-  z-index: 10001;
+  z-index: 999;
   visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
