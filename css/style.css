@@ -241,7 +241,7 @@ perspective effects (not including the modals and the overlay).
           .md-content .md-body .md-box .box--right {
             order: 1; } }
       .md-content .md-body .md-box .box--left .left--img img, .md-content .md-body .md-box .box--left .left--img video, .md-content .md-body .md-box .box--left .left--img iframe {
-        max-height: 458px;
+        height: 458px;
         object-fit: cover;
         width: 100%; }
       .md-content .md-body .md-box .box--left .left--comments {
