@@ -1,13 +1,29 @@
 #header {
     height: 70px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 999;
-
+    @include transition;
     @media (max-width: 992px) {
         display: none;
+    }
+    &.active{
+        background: #fff;
+        box-shadow: 0 0 3px rgba(#000, 0.2);
+        .header-left .header--menus > ul li a{
+            color: #000000;
+        }
+        .header-left .header--menus > ul li.current_page_item a{
+            color: #01508E;
+        }
+        .header-actions .notify .notify--icon svg path{
+            fill: #729FD5;
+        }
+        .header-actions .user .user--current{
+            background: transparent;
+        }
     }
 
     .header-left {
@@ -42,7 +58,6 @@
                     &.current_page_item {
                         a {
                             font-weight: bold;
-
                             &:after {
                                 width: 100%;
                             }
@@ -83,7 +98,7 @@
 
     .header-actions {
         display: flex;
-        padding: 15px 0;
+        padding: 15px 40px 15px 0;
         justify-content: flex-end;
 
         .actions--box {
@@ -131,11 +146,11 @@
             .notify--dropdown {
                 position: absolute;
                 top: 60px;
-                right: -30px;
+                right: -28px;
                 background: #305c80;
                 border-radius: 8px;
                 border: 1px solid #808080;
-                padding: 15px 10px 15px 0;
+                padding: 15px 0;
                 width: 294px;
                 @include transition;
                 opacity: 0;
@@ -183,7 +198,12 @@
                         font-size: 12px;
                         line-height: 16px;
                         color: #E6E6E6;
+                        @include transition;
 
+                    }
+                    &:hover span{
+                        padding-left: 3px;
+                        color: #fff;
                     }
                 }
 
@@ -194,7 +214,7 @@
                         display: grid;
                         grid-template-columns: 1fr 63px;
                         grid-gap: 12px;
-                        padding: 8px 6px 8px 24px;
+                        padding: 8px 12px 8px 24px;
                         @include transition;
                         position: relative;
 
@@ -210,7 +230,7 @@
                         }
 
                         &:hover {
-                            background: #00609A;
+                            background: #3e698d;
                         }
 
                         .item--title {
@@ -232,7 +252,7 @@
 
         .user {
             margin-left: 16px;
-
+            position: relative;
             .user--current {
                 width: 40px;
                 height: 40px;
@@ -266,6 +286,76 @@
                     color: #fff;
                     z-index: 99;
                 }
+            }
+            .user--menu{
+                position: absolute;
+                top: 60px;
+                right: -20px;
+                background: #305c80;
+                border-radius: 8px;
+                border: 1px solid #808080;
+                padding: 15px;
+                width: 220px;
+                @include transition;
+                opacity: 0;
+                visibility: hidden;
+                &::before, &::after{
+                    bottom: 100%;
+                    border: solid transparent;
+                    content: "";
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                }
+                &::before{
+                    border-color: rgba(128, 128, 128, 0);
+                    border-bottom-color: #808080;
+                    border-width: 10px;
+                    margin-left: -10px;
+                    right: 28px;
+                }
+                &::after{
+                    border-color: rgba(136, 183, 213, 0);
+                    border-bottom-color: #305c80;
+                    border-width: 8px;
+                    margin-left: -8px;
+                    right: 30px;
+                }
+                ul{
+                    display: table;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: block;
+                        position: relative;
+                        padding: 5px 0;
+                        a{
+                            display: block;
+                            color: #E6E6E6;
+                            padding-left: 25px;
+                            line-height: 20px;
+                            @include transition;
+                            &:hover{
+                                color: #fff;
+                                padding-left: 28px;
+                            }
+                            &.btn-logout{
+                                color: $color;
+                            }
+                            img{
+                                position: absolute;
+                                left: 0;
+                                height: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.open .user--menu{
+                top: 52px;
+                opacity: 1;
+                visibility: visible;
             }
         }
     }
@@ -452,6 +542,7 @@
 	                    right: 0;
 	                    bottom: 0;
 	                    top: 0;
+                        path{fill: #729FD5;}
 	                }
 
 	                span {
@@ -574,7 +665,6 @@
 	                height: 32px;
 	                border-radius: 50%;
 	                border: 1px solid #048EB5;
-	                background: rgba(0, 0, 0, 0.8);
 	                position: relative;
 	                cursor: pointer;
 	                pointer-events: auto;
@@ -603,6 +693,76 @@
 	                    z-index: 99;
 	                }
 	            }
+                .user--menu{
+                    position: absolute;
+                    top: 70px;
+                    right: -20px;
+                    background: #305c80;
+                    border-radius: 8px;
+                    border: 1px solid #808080;
+                    padding: 15px;
+                    width: 220px;
+                    @include transition;
+                    opacity: 0;
+                    visibility: hidden;
+                    &::before, &::after{
+                        bottom: 100%;
+                        border: solid transparent;
+                        content: "";
+                        height: 0;
+                        width: 0;
+                        position: absolute;
+                        pointer-events: none;
+                    }
+                    &::before{
+                        border-color: rgba(128, 128, 128, 0);
+                        border-bottom-color: #808080;
+                        border-width: 10px;
+                        margin-left: -10px;
+                        right: 25px;
+                    }
+                    &::after{
+                        border-color: rgba(136, 183, 213, 0);
+                        border-bottom-color: #305c80;
+                        border-width: 8px;
+                        margin-left: -8px;
+                        right: 27px;
+                    }
+                    ul{
+                        display: table;
+                        margin: 0;
+                        padding: 0;
+                        li{
+                            display: block;
+                            position: relative;
+                            padding: 5px 0;
+                            a{
+                                display: block;
+                                color: #E6E6E6;
+                                padding-left: 25px;
+                                line-height: 20px;
+                                @include transition;
+                                &:hover{
+                                    color: #fff;
+                                    padding-left: 28px;
+                                }
+                                &.btn-logout{
+                                    color: $color;
+                                }
+                                img{
+                                    position: absolute;
+                                    left: 0;
+                                    height: 17px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.open .user--menu{
+                    top: 60px;
+                    opacity: 1;
+                    visibility: visible;
+                }
 	        }
 	    }
 
